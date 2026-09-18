@@ -1,96 +1,111 @@
-<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="html-login-forms project banner">
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="html-login-forms banner">
   <defs>
-    <!-- Background gradient -->
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#0d1117"/>
-      <stop offset="100%" stop-color="#161b22"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0d1b2e"/>
+      <stop offset="60%"  stop-color="#0f2040"/>
+      <stop offset="100%" stop-color="#0d1b2e"/>
     </linearGradient>
-    <!-- Accent glow -->
-    <radialGradient id="glow" cx="18%" cy="50%" r="35%">
-      <stop offset="0%"   stop-color="#1f6feb" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
-    </radialGradient>
-    <!-- Subtle grid pattern -->
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#21262d" stroke-width="0.8"/>
-    </pattern>
+    <linearGradient id="winbg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1a2d44"/>
+      <stop offset="100%" stop-color="#152338"/>
+    </linearGradient>
+    <clipPath id="winclip">
+      <rect x="648" y="30" width="510" height="245" rx="10"/>
+    </clipPath>
   </defs>
 
   <!-- Base background -->
   <rect width="1200" height="300" fill="url(#bg)"/>
-  <!-- Grid overlay -->
-  <rect width="1200" height="300" fill="url(#grid)" opacity="0.6"/>
-  <!-- Glow blob -->
-  <rect width="1200" height="300" fill="url(#glow)"/>
 
-  <!-- Left accent bar -->
-  <rect x="0" y="0" width="4" height="300" fill="#1f6feb"/>
+  <!-- Faint background code — top left -->
+  <text x="22" y="28" font-family="monospace" font-size="13" fill="#4a7fa5" opacity="0.25">&lt;form action="login"&gt;</text>
+  <!-- Faint background code — bottom left -->
+  <text x="22" y="286" font-family="monospace" font-size="13" fill="#4a7fa5" opacity="0.20">&lt;/form&gt;</text>
 
-  <!-- Shield icon (left) -->
-  <g transform="translate(68, 90)">
-    <!-- Shield body -->
-    <path d="M60 0 L120 22 L120 75 Q120 115 60 135 Q0 115 0 75 L0 22 Z"
-          fill="none" stroke="#1f6feb" stroke-width="3" opacity="0.9"/>
-    <!-- Shield fill (subtle) -->
-    <path d="M60 0 L120 22 L120 75 Q120 115 60 135 Q0 115 0 75 L0 22 Z"
-          fill="#1f6feb" opacity="0.08"/>
-    <!-- Magnifier inside shield -->
-    <circle cx="52" cy="60" r="22" fill="none" stroke="#58a6ff" stroke-width="2.5"/>
-    <line x1="68" y1="76" x2="82" y2="90" stroke="#58a6ff" stroke-width="3" stroke-linecap="round"/>
-    <!-- HTML brackets inside magnifier -->
-    <text x="36" y="67" font-family="monospace" font-size="18" fill="#58a6ff" opacity="0.85">&lt;/&gt;</text>
-  </g>
+  <!-- ── LEFT SIDE ─────────────────────────────────────── -->
 
-  <!-- Divider line -->
-  <line x1="230" y1="70" x2="230" y2="230" stroke="#30363d" stroke-width="1.5"/>
+  <!-- Lock / shield icon circle -->
+  <circle cx="48" cy="118" r="18" fill="none" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="41" y="113" width="14" height="11" rx="2" fill="none" stroke="#4a90d9" stroke-width="1.8"/>
+  <path d="M44 113 Q44 107 48 107 Q52 107 52 113" fill="none" stroke="#4a90d9" stroke-width="1.8"/>
+  <circle cx="48" cy="118" r="2" fill="#4a90d9"/>
 
-  <!-- Project name -->
-  <text x="265" y="140"
-        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', monospace"
-        font-size="52" font-weight="700" letter-spacing="-1"
-        fill="#e6edf3">html-login-forms</text>
-
-  <!-- Tagline -->
-  <text x="267" y="182"
+  <!-- Title -->
+  <text x="76" y="128"
         font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="20" font-weight="400"
-        fill="#8b949e">Phishing login form detection from HTML DOM signatures</text>
+        font-size="40" font-weight="800" fill="#ffffff" letter-spacing="-0.5">html-login-forms</text>
 
-  <!-- Tech badges row -->
-  <g transform="translate(267, 210)">
-    <!-- XGBoost badge -->
-    <rect x="0" y="0" width="90" height="28" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <text x="45" y="19" text-anchor="middle"
-          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="12" font-weight="500" fill="#58a6ff">XGBoost</text>
+  <!-- Subtitle -->
+  <text x="26" y="160"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="15.5" fill="#94a3b8">Phishing login-page detection — DOM structural analysis &amp; ML classification</text>
 
-    <!-- Random Forest badge -->
-    <rect x="98" y="0" width="122" height="28" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <text x="159" y="19" text-anchor="middle"
-          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="12" font-weight="500" fill="#58a6ff">Random Forest</text>
+  <!-- Badges -->
+  <!-- XGBoost — green -->
+  <rect x="26"  y="183" width="100" height="28" rx="14" fill="#14532d" stroke="#22c55e" stroke-width="1.2"/>
+  <text x="76"  y="201" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12.5" font-weight="600" fill="#22c55e">XGBoost</text>
 
-    <!-- MLflow badge -->
-    <rect x="228" y="0" width="72" height="28" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <text x="264" y="19" text-anchor="middle"
-          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="12" font-weight="500" fill="#3fb950">MLflow</text>
+  <!-- Random Forest — blue -->
+  <rect x="134" y="183" width="130" height="28" rx="14" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.2"/>
+  <text x="199" y="201" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12.5" font-weight="600" fill="#3b82f6">Random Forest</text>
 
-    <!-- Python badge -->
-    <rect x="308" y="0" width="72" height="28" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <text x="344" y="19" text-anchor="middle"
-          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="12" font-weight="500" fill="#3fb950">Python 3.14</text>
+  <!-- MLflow — yellow/olive -->
+  <rect x="272" y="183" width="80" height="28" rx="14" fill="#3f2d00" stroke="#ca8a04" stroke-width="1.2"/>
+  <text x="312" y="201" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12.5" font-weight="600" fill="#facc15">MLflow</text>
 
-    <!-- CI badge -->
-    <rect x="388" y="0" width="80" height="28" rx="4" fill="#21262d" stroke="#30363d" stroke-width="1"/>
-    <circle cx="404" cy="14" r="5" fill="#3fb950"/>
-    <text x="446" y="19" text-anchor="middle"
-          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="12" font-weight="500" fill="#8b949e">CI passing</text>
-  </g>
+  <!-- Structural Analysis — purple -->
+  <rect x="360" y="183" width="158" height="28" rx="14" fill="#2e1065" stroke="#a855f7" stroke-width="1.2"/>
+  <text x="439" y="201" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12.5" font-weight="600" fill="#d8b4fe">Structural Analysis</text>
 
-  <!-- Bottom accent line -->
-  <rect x="0" y="296" width="1200" height="4" fill="url(#bg)"/>
-  <line x1="265" y1="298" x2="900" y2="298" stroke="#1f6feb" stroke-width="1.5" opacity="0.4"/>
+  <!-- ── RIGHT SIDE — macOS window mockup ─────────────── -->
+
+  <!-- Window shadow -->
+  <rect x="652" y="36" width="510" height="245" rx="10" fill="#000000" opacity="0.35"/>
+
+  <!-- Window body -->
+  <rect x="648" y="32" width="510" height="245" rx="10" fill="url(#winbg)" clip-path="url(#winclip)"/>
+
+  <!-- Title bar -->
+  <rect x="648" y="32" width="510" height="34" rx="10" fill="#1e3248"/>
+  <rect x="648" y="52"  width="510" height="14" fill="#1e3248"/>
+
+  <!-- Traffic lights -->
+  <circle cx="670" cy="49" r="6" fill="#ff5f57"/>
+  <circle cx="690" cy="49" r="6" fill="#febc2e"/>
+  <circle cx="710" cy="49" r="6" fill="#28c840"/>
+
+  <!-- Window content area -->
+  <!-- "Sign in to your account" -->
+  <text x="903" y="96" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#e2e8f0">Sign in to your account</text>
+
+  <!-- Email field -->
+  <rect x="700" y="108" width="260" height="30" rx="5" fill="#1a2d44" stroke="#2d4a6a" stroke-width="1"/>
+  <text x="714" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#64748b">Email address</text>
+
+  <!-- Password field -->
+  <rect x="700" y="148" width="260" height="30" rx="5" fill="#1a2d44" stroke="#2d4a6a" stroke-width="1"/>
+  <text x="714" y="168" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="12" fill="#64748b">Password</text>
+
+  <!-- Log in button -->
+  <rect x="700" y="192" width="260" height="34" rx="5" fill="#2563eb"/>
+  <text x="830" y="214" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="14" font-weight="600" fill="#ffffff">Log in</text>
+
+  <!-- Detection overlay — red magnifier with X -->
+  <circle cx="1010" cy="175" r="52" fill="#1a0a0a" opacity="0.65"/>
+  <circle cx="1010" cy="175" r="52" fill="none" stroke="#ef4444" stroke-width="3.5"/>
+  <!-- X inside -->
+  <line x1="990" y1="155" x2="1030" y2="195" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+  <line x1="1030" y1="155" x2="990"  y2="195" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+  <!-- Magnifier handle -->
+  <line x1="1050" y1="215" x2="1070" y2="238" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/>
 </svg>
