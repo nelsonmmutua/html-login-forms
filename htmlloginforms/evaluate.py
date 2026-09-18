@@ -13,14 +13,14 @@ from sklearn.metrics import (
     roc_auc_score,
 )
 
-from config import (
+from htmlloginforms.config import (
     CLASSES,
     RETEST_LOGIN_FORM,
     RETEST_NO_FORM,
     STRUCTURAL_COLS,
     STRUCTURAL_XGB_MODEL,
 )
-from features import structural_features
+from htmlloginforms.features import structural_features
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 log = logging.getLogger(__name__)

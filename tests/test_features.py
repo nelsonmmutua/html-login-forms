@@ -1,7 +1,7 @@
 """Tests for features.py."""
 import pandas as pd
 
-from features import count_all_tags, count_tag, has_tag, structural_features
+from htmlloginforms.features import count_all_tags, count_tag, has_tag, structural_features
 
 SIG_MALICIOUS = "(body(div(form(label(input))(label(input))(button))(iframe)(style)))"
 SIG_NO_FORM   = "(body(div(header(nav(ul(li(a))(li(a)))))(main(p)(p))))"
@@ -24,7 +24,7 @@ def test_count_all_tags():
 
 
 def test_structural_features_columns():
-    from config import STRUCTURAL_COLS
+    from htmlloginforms.config import STRUCTURAL_COLS
     df  = pd.DataFrame({"html_signature": [SIG_MALICIOUS, SIG_NO_FORM]})
     out = structural_features(df)
     for col in STRUCTURAL_COLS:

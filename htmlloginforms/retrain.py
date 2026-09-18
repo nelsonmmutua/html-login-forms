@@ -13,7 +13,7 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support, roc
 from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 
-from config import (
+from htmlloginforms.config import (
     MLFLOW_DB,
     MLFLOW_EXPERIMENT,
     MODELS_DIR,
@@ -25,7 +25,7 @@ from config import (
     TRAIN_NO_FORM,
     XGB_PARAMS,
 )
-from features import structural_features
+from htmlloginforms.features import structural_features
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)

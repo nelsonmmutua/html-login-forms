@@ -13,8 +13,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Common Commands
 
 ```bash
-# Install all dependencies (runtime + dev)
-make install
+# Install all dependencies (runtime + dev) and the package in editable mode
+make install   # runs: uv sync --extra dev
 
 # Train both models in parallel (recommended)
 make train-all
@@ -45,7 +45,7 @@ make lint
 mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5001
 ```
 
-All `make` targets set `PYTHONPATH=htmlloginforms` automatically — do not run scripts directly with `python htmlloginforms/train.py` without also setting `PYTHONPATH`.
+All `make` targets use `uv run`, which automatically uses the project's `.venv`. Run `make install` once after cloning before using any other target.
 
 ## Architecture
 

@@ -4,8 +4,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from config import STRUCTURAL_COLS
-from features import structural_features
+from htmlloginforms.config import STRUCTURAL_COLS
+from htmlloginforms.features import structural_features
 
 SIG_MALICIOUS = "(body(div(form(label(input))(label(input))(button))(iframe)(style)))"
 SIG_NO_FORM   = "(body(div(header(nav(ul(li(a))(li(a)))))(main(p)(p))))"
@@ -53,7 +53,7 @@ def test_predict_returns_dataframe(tmp_path):
     import joblib
     from sklearn.ensemble import RandomForestClassifier
 
-    from predict import predict
+    from htmlloginforms.predict import predict
 
     df  = _make_features(SAMPLE_TRAIN)
     X, y = df[STRUCTURAL_COLS].values, df["binary_label"].values
@@ -72,7 +72,7 @@ def test_predict_output_labels(tmp_path):
     import joblib
     from sklearn.ensemble import RandomForestClassifier
 
-    from predict import predict
+    from htmlloginforms.predict import predict
 
     df  = _make_features(SAMPLE_TRAIN)
     X, y = df[STRUCTURAL_COLS].values, df["binary_label"].values
@@ -89,7 +89,7 @@ def test_predict_raises_on_empty_list(tmp_path):
     import joblib
     from sklearn.ensemble import RandomForestClassifier
 
-    from predict import predict
+    from htmlloginforms.predict import predict
 
     df  = _make_features(SAMPLE_TRAIN)
     X, y = df[STRUCTURAL_COLS].values, df["binary_label"].values
@@ -106,7 +106,7 @@ def test_predict_raises_on_empty_string(tmp_path):
     import joblib
     from sklearn.ensemble import RandomForestClassifier
 
-    from predict import predict
+    from htmlloginforms.predict import predict
 
     df  = _make_features(SAMPLE_TRAIN)
     X, y = df[STRUCTURAL_COLS].values, df["binary_label"].values
@@ -123,7 +123,7 @@ def test_predict_raises_on_mismatched_parens(tmp_path):
     import joblib
     from sklearn.ensemble import RandomForestClassifier
 
-    from predict import predict
+    from htmlloginforms.predict import predict
 
     df  = _make_features(SAMPLE_TRAIN)
     X, y = df[STRUCTURAL_COLS].values, df["binary_label"].values
@@ -137,7 +137,7 @@ def test_predict_raises_on_mismatched_parens(tmp_path):
 
 
 def test_predict_raises_on_missing_model():
-    from predict import predict
+    from htmlloginforms.predict import predict
 
     with pytest.raises(FileNotFoundError, match="Model file not found"):
         predict([SIG_MALICIOUS], Path("nonexistent_model.pkl"))
@@ -157,7 +157,7 @@ def _save_model(tmp_path) -> Path:
 
 
 def test_predict_csv_returns_dataframe(tmp_path):
-    from predict import predict_csv
+    from htmlloginforms.predict import predict_csv
 
     model_path = _save_model(tmp_path)
     csv_path = tmp_path / "input.csv"
@@ -169,7 +169,7 @@ def test_predict_csv_returns_dataframe(tmp_path):
 
 
 def test_predict_csv_preserves_url_column(tmp_path):
-    from predict import predict_csv
+    from htmlloginforms.predict import predict_csv
 
     model_path = _save_model(tmp_path)
     csv_path = tmp_path / "input.csv"
@@ -184,7 +184,7 @@ def test_predict_csv_preserves_url_column(tmp_path):
 
 
 def test_predict_csv_writes_output_file(tmp_path):
-    from predict import predict_csv
+    from htmlloginforms.predict import predict_csv
 
     model_path = _save_model(tmp_path)
     csv_path    = tmp_path / "input.csv"
@@ -198,7 +198,7 @@ def test_predict_csv_writes_output_file(tmp_path):
 
 
 def test_predict_csv_raises_on_missing_column(tmp_path):
-    from predict import predict_csv
+    from htmlloginforms.predict import predict_csv
 
     model_path = _save_model(tmp_path)
     csv_path = tmp_path / "bad_input.csv"

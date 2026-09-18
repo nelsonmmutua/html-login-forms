@@ -9,8 +9,8 @@ import mlflow
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
 
-from config import MLFLOW_DB, MLFLOW_EXPERIMENT, RETEST_LOGIN_FORM, RETEST_NO_FORM
-from train import prepare_data, train
+from htmlloginforms.config import MLFLOW_DB, MLFLOW_EXPERIMENT, RETEST_LOGIN_FORM, RETEST_NO_FORM
+from htmlloginforms.train import prepare_data, train
 
 MODEL_TYPES = ["xgboost", "random_forest"]
 

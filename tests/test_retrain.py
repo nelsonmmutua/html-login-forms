@@ -35,10 +35,10 @@ def test_new_data_merges_and_deduplicates(tmp_path):
     EXISTING[EXISTING["label"] == "NO_FORM"].to_csv(existing_nf)
     NEW_DATA.to_csv(new_path, index=False)
 
-    import config
+    import htmlloginforms.config as config
     with patch.object(config, "TRAIN_LOGIN_FORM", existing_lf), \
          patch.object(config, "TRAIN_NO_FORM",    existing_nf):
-        from retrain import load_and_merge
+        from htmlloginforms.retrain import load_and_merge
         merged = load_and_merge(new_path)
 
     assert len(merged) >= len(EXISTING)
@@ -54,10 +54,10 @@ def test_binary_label_assigned(tmp_path):
     EXISTING[EXISTING["label"] == "NO_FORM"].to_csv(existing_nf)
     NEW_DATA.to_csv(new_path, index=False)
 
-    import config
+    import htmlloginforms.config as config
     with patch.object(config, "TRAIN_LOGIN_FORM", existing_lf), \
          patch.object(config, "TRAIN_NO_FORM",    existing_nf):
-        from retrain import load_and_merge
+        from htmlloginforms.retrain import load_and_merge
         merged = load_and_merge(new_path)
 
     assert "binary_label" in merged.columns

@@ -1,5 +1,5 @@
 """Tests for config.py."""
-from config import (
+from htmlloginforms.config import (
     CLASSES,
     CREDENTIAL_GROUP,
     MALICIOUS_LABEL,

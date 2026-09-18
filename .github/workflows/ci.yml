@@ -22,10 +22,10 @@ jobs:
         uses: astral-sh/setup-uv@v5
 
       - name: Install dependencies
-        run: uv pip install --system -r requirements-dev.txt
+        run: uv sync --extra dev
 
       - name: Lint
-        run: python -m ruff check htmlloginforms/ tests/
+        run: uv run ruff check htmlloginforms/ tests/
 
       - name: Test
-        run: python -m pytest tests/ -v --cov=htmlloginforms --cov-report=xml
+        run: uv run pytest tests/ -v --cov=htmlloginforms --cov-report=xml

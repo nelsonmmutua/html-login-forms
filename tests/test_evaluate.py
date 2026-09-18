@@ -7,8 +7,8 @@ import pandas as pd
 import pytest
 from sklearn.ensemble import RandomForestClassifier
 
-from config import STRUCTURAL_COLS
-from features import structural_features
+from htmlloginforms.config import STRUCTURAL_COLS
+from htmlloginforms.features import structural_features
 
 SIG_MALICIOUS = "(body(div(form(label(input))(label(input))(button))(iframe)(style)))"
 SIG_NO_FORM   = "(body(div(header(nav(ul(li(a))(li(a)))))(main(p)(p))))"
@@ -50,7 +50,7 @@ def _retest_csvs(tmp_path) -> tuple[Path, Path]:
 
 
 def test_evaluate_returns_metrics(tmp_path):
-    from evaluate import evaluate
+    from htmlloginforms.evaluate import evaluate
 
     model_path = _trained_model(tmp_path)
     lf_path, nf_path = _retest_csvs(tmp_path)
@@ -64,7 +64,7 @@ def test_evaluate_returns_metrics(tmp_path):
 
 
 def test_evaluate_confusion_matrix_sums(tmp_path):
-    from evaluate import evaluate
+    from htmlloginforms.evaluate import evaluate
 
     model_path = _trained_model(tmp_path)
     lf_path, nf_path = _retest_csvs(tmp_path)
@@ -76,7 +76,7 @@ def test_evaluate_confusion_matrix_sums(tmp_path):
 
 
 def test_evaluate_fp_fn_are_dataframes(tmp_path):
-    from evaluate import evaluate
+    from htmlloginforms.evaluate import evaluate
 
     model_path = _trained_model(tmp_path)
     lf_path, nf_path = _retest_csvs(tmp_path)
@@ -88,7 +88,7 @@ def test_evaluate_fp_fn_are_dataframes(tmp_path):
 
 
 def test_evaluate_raises_on_missing_model(tmp_path):
-    from evaluate import evaluate
+    from htmlloginforms.evaluate import evaluate
 
     lf_path, nf_path = _retest_csvs(tmp_path)
 

@@ -3,7 +3,7 @@ import re
 
 import pandas as pd
 
-from config import CREDENTIAL_GROUP
+from htmlloginforms.config import CREDENTIAL_GROUP
 
 
 def has_tag(sig: str, tag: str) -> int:

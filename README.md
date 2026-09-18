@@ -72,7 +72,7 @@ cd html-login-forms
 ### 3. Install dependencies
 
 ```bash
-uv pip install -r requirements-dev.txt
+uv sync --extra dev
 ```
 
 ### 4. Add your data

@@ -6,8 +6,8 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
-from config import STRUCTURAL_COLS, STRUCTURAL_XGB_MODEL
-from features import structural_features
+from htmlloginforms.config import STRUCTURAL_COLS, STRUCTURAL_XGB_MODEL
+from htmlloginforms.features import structural_features
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger(__name__)
