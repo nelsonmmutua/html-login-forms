@@ -6,11 +6,11 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-log = logging.getLogger(__name__)
-
 from config import STRUCTURAL_COLS, STRUCTURAL_XGB_MODEL
 from features import structural_features
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+log = logging.getLogger(__name__)
 
 # Minimal pattern: a valid signature starts with (body or (html and contains nested parens
 _VALID_SIG_CHARS = set("abcdefghijklmnopqrstuvwxyz()")

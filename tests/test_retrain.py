@@ -1,11 +1,8 @@
 """Tests for retrain.py."""
-import sys
 from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd
-
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 SIG_MALICIOUS = "(body(div(form(label(input))(label(input))(button))(iframe)(style)))"
 SIG_NO_FORM   = "(body(div(header(nav(ul(li(a))(li(a)))))(main(p)(p))))"

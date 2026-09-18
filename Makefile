@@ -1,6 +1,7 @@
-PYTHON := python
+PYTHON     := python
+PYTHONPATH := src
 
-.PHONY: install test lint train train-all predict predict-csv retrain evaluate clean
+.PHONY: install test lint train train-rf train-all predict predict-csv retrain evaluate clean
 
 install:
 	pip install -r requirements.txt
@@ -9,32 +10,32 @@ test:
 	$(PYTHON) -m pytest tests/ -v
 
 lint:
-	$(PYTHON) -m ruff check .
+	$(PYTHON) -m ruff check src/ tests/
 
 train:
-	$(PYTHON) train.py --model xgboost
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/train.py --model xgboost
 
 train-rf:
-	$(PYTHON) train.py --model random_forest
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/train.py --model random_forest
 
 train-all:
-	$(PYTHON) train_all.py
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/train_all.py
 
 predict:
-	$(PYTHON) predict.py "$(SIG)" --model $(or $(MODEL),models/structural_xgboost.pkl)
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/predict.py "$(SIG)" --model $(or $(MODEL),models/structural_xgboost.pkl)
 
 predict-csv:
-	$(PYTHON) predict.py --input-csv $(INPUT) --output-csv $(or $(OUTPUT),predictions.csv) --model $(or $(MODEL),models/structural_xgboost.pkl)
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/predict.py --input-csv $(INPUT) --output-csv $(or $(OUTPUT),predictions.csv) --model $(or $(MODEL),models/structural_xgboost.pkl)
 
 retrain:
-	$(PYTHON) retrain.py $(DATA) --model $(or $(MODEL_TYPE),xgboost)
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/retrain.py $(DATA) --model $(or $(MODEL_TYPE),xgboost)
 
 evaluate:
 	@echo "=== XGBoost ==="
-	$(PYTHON) evaluate.py --model models/structural_xgboost.pkl
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/evaluate.py --model models/structural_xgboost.pkl
 	@echo ""
 	@echo "=== Random Forest ==="
-	$(PYTHON) evaluate.py --model models/structural_random_forest.pkl
+	PYTHONPATH=$(PYTHONPATH) $(PYTHON) src/evaluate.py --model models/structural_random_forest.pkl
 
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} +

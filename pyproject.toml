@@ -21,10 +21,11 @@ train      = "train:main"
 train-all  = "train_all:main"
 predict    = "predict:main"
 retrain    = "retrain:main"
+evaluate   = "evaluate:main"
 
 [tool.pytest.ini_options]
 testpaths   = ["tests"]
-pythonpath  = ["."]
+pythonpath  = ["src"]
 
 [tool.ruff]
 line-length = 100

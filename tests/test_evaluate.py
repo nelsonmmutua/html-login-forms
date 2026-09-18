@@ -1,5 +1,4 @@
 """Tests for evaluate.py."""
-import sys
 from pathlib import Path
 from unittest.mock import patch
 
@@ -8,7 +7,6 @@ import pandas as pd
 import pytest
 from sklearn.ensemble import RandomForestClassifier
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from config import STRUCTURAL_COLS
 from features import structural_features
 
