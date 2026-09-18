@@ -26,17 +26,22 @@ Each page's DOM is represented as a compact tree string, e.g.:
 
 ```
 html-login-forms/
-├── config.py         — paths, hyperparameters, feature columns
-├── features.py       — structural feature extraction
-├── train.py          — train a single model (XGBoost or RF)
-├── train_all.py      — train both models in parallel
-├── predict.py        — run inference on html_signature strings
-├── retrain.py        — retrain on new labeled data
-├── tests/            — pytest test suite
+├── htmlloginforms/
+│   ├── config.py         — paths, hyperparameters, feature columns
+│   ├── features.py       — structural feature extraction
+│   ├── train.py          — train a single model (XGBoost or RF)
+│   ├── train_all.py      — train both models in parallel
+│   ├── predict.py        — run inference on html_signature strings
+│   ├── evaluate.py       — evaluate a saved model on the retest set
+│   └── retrain.py        — retrain on new labeled data
+├── tests/                — pytest test suite (35 tests)
 ├── data/
-│   ├── train/        — training CSVs
-│   └── retest/       — held-out validation CSVs
-└── models/           — saved model artifacts (populated after training)
+│   ├── train/            — training CSVs
+│   └── retest/           — held-out validation CSVs
+├── models/               — saved model artifacts (populated after training)
+├── Makefile              — CLI shortcuts for all operations
+├── Dockerfile
+└── pyproject.toml
 ```
 
 ---
@@ -53,33 +58,39 @@ pip install -r requirements.txt
 
 **Train both models in parallel (recommended):**
 ```bash
-python train_all.py
-# or
 make train-all
 ```
 
 **Train a single model:**
 ```bash
-python train.py --model xgboost
-python train.py --model random_forest
+make train        # XGBoost
+make train-rf     # Random Forest
 ```
 
 **Predict on an html_signature:**
 ```bash
-python predict.py "(body(div(form(input)(button))))"
-python predict.py "(body(div(form(input)(button))))" --model models/structural_random_forest.pkl
+make predict SIG="(body(div(form(input)(button))))"
+make predict SIG="(body(div(form(input)(button))))" MODEL=models/structural_random_forest.pkl
+```
+
+**Batch predict from CSV:**
+```bash
+make predict-csv INPUT=data/retest/proxy_data_login_form.csv OUTPUT=predictions.csv
+```
+
+**Evaluate saved models on retest set:**
+```bash
+make evaluate
 ```
 
 **Retrain on new labeled data:**
 ```bash
-python retrain.py path/to/new_data.csv --model xgboost
+make retrain DATA=path/to/new_data.csv
 ```
 
 **Run tests:**
 ```bash
 make test
-# or
-pytest tests/ -v
 ```
 
 ---
