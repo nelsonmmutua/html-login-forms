@@ -121,7 +121,7 @@ rm mlflow.db && make train-all
 
 1. `actions/setup-python@v5` — Python version from `.python-version`
 2. `astral-sh/setup-uv@v5` — installs uv
-3. `uv pip install --system -r requirements-dev.txt` — install all deps
+3. `uv sync --extra dev` — install runtime deps, dev deps, and the package (editable)
 4. `ruff check htmlloginforms/ tests/` — lint
 5. `pytest tests/ -v --cov=htmlloginforms --cov-report=xml` — tests + coverage
 

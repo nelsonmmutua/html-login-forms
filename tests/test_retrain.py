@@ -1,5 +1,4 @@
 """Tests for retrain.py."""
-from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd

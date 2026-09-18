@@ -194,5 +194,5 @@ docker run -v $(pwd)/data:/app/data -v $(pwd)/models:/app/models html-login-form
 Training metrics are logged to a local SQLite database (`mlflow.db`). View runs with:
 
 ```bash
-mlflow ui --backend-store-uri sqlite:///mlflow.db
+mlflow ui --backend-store-uri sqlite:///mlflow.db --port 5001
 ```
