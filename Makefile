@@ -1,4 +1,4 @@
-PYTHON     := python
+PYTHON     := /Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14
 PYTHONPATH := htmlloginforms
 
 .PHONY: install test lint train train-rf train-all predict predict-csv retrain evaluate clean

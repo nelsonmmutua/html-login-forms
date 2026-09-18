@@ -2,7 +2,7 @@
 from pathlib import Path
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 
 DATA_DIR   = ROOT / "data"
 TRAIN_DIR  = DATA_DIR / "train"
