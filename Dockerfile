@@ -5,12 +5,12 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY src/ src/
+COPY htmlloginforms/ htmlloginforms/
 
 # data/ and models/ are expected to be mounted at runtime:
 #   docker run -v $(pwd)/data:/app/data -v $(pwd)/models:/app/models html-login-forms
 VOLUME ["/app/data", "/app/models"]
 
-ENV PYTHONPATH=src
+ENV PYTHONPATH=htmlloginforms
 
-CMD ["python", "src/train_all.py"]
+CMD ["python", "htmlloginforms/train_all.py"]
