@@ -34,7 +34,12 @@ html-login-forms/
 │   ├── predict.py        — run inference on html_signature strings
 │   ├── evaluate.py       — evaluate a saved model on the retest set
 │   └── retrain.py        — retrain on new labeled data
-├── tests/                — pytest test suite (35 tests)
+├── tests/
+│   ├── test_config.py    — config constants and hyperparameters
+│   ├── test_features.py  — structural feature extraction
+│   ├── test_modelling.py — training, prediction, input validation, batch CSV
+│   ├── test_evaluate.py  — retest evaluation and metrics
+│   └── test_retrain.py   — data merge, deduplication, label assignment
 ├── data/
 │   ├── train/            — training CSVs
 │   └── retest/           — held-out validation CSVs
