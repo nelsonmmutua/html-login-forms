@@ -4,7 +4,7 @@ PYTHONPATH := htmlloginforms
 .PHONY: install test lint train train-rf train-all predict predict-csv retrain evaluate clean
 
 install:
-	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 
 test:
 	$(PYTHON) -m pytest tests/ -v

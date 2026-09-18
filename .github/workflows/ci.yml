@@ -20,10 +20,10 @@ jobs:
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-dev.txt
 
       - name: Lint
-        run: python -m ruff check .
+        run: python -m ruff check htmlloginforms/ tests/
 
       - name: Test
-        run: python -m pytest tests/ -v
+        run: python -m pytest tests/ -v --cov=htmlloginforms --cov-report=xml
