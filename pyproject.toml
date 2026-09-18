@@ -1,0 +1,39 @@
+[project]
+name = "html-login-forms"
+version = "0.1.0"
+description = "Structural login-form detection using XGBoost and Random Forest on HTML DOM signatures."
+requires-python = ">=3.10"
+dependencies = [
+    "joblib==1.5.3",
+    "mlflow==3.16.0",
+    "numpy==2.4.4",
+    "pandas==3.0.2",
+    "scikit-learn==1.8.0",
+    "scipy==1.17.1",
+    "xgboost==3.2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1", "ruff==0.11.13"]
+
+[project.scripts]
+train      = "train:main"
+train-all  = "train_all:main"
+predict    = "predict:main"
+retrain    = "retrain:main"
+
+[tool.pytest.ini_options]
+testpaths   = ["tests"]
+pythonpath  = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]   # pycodestyle, pyflakes, isort, pyupgrade
+ignore = ["E501"]                  # long lines handled by formatter
+
+[build-system]
+requires      = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
