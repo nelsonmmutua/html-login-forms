@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.svg" alt="html-login-forms banner" width="100%"/>
+</p>
+
 # html-login-forms
 
 Detects malicious phishing login forms by analysing the structural signature of a page's HTML DOM. No raw HTML, no text content, no screenshots — only the compact tree string (`html_signature`) that encodes element hierarchy.
