@@ -21,11 +21,14 @@ from xgboost import XGBClassifier
 from htmlloginforms.config import (
     CLASSES,
     MALICIOUS_LABEL,
-    MLFLOW_DB,
     MLFLOW_EXPERIMENT,
+    MLFLOW_TRACKING_URI,
     MODELS_DIR,
     RANDOM_STATE,
+    RETEST_LOGIN_FORM,
+    RETEST_NO_FORM,
     RF_PARAMS,
+    ROOT,
     STRUCTURAL_COLS,
     TEST_SIZE,
     TRAIN_LOGIN_FORM,
@@ -99,7 +102,7 @@ def evaluate(model, X: np.ndarray, y: np.ndarray, label: str) -> tuple[float, fl
 def train(model_type: str, data: dict):
     """Train one model type using pre-prepared data splits."""
     MODELS_DIR.mkdir(exist_ok=True)
-    mlflow.set_tracking_uri(f"sqlite:///{MLFLOW_DB}")
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(MLFLOW_EXPERIMENT)
 
     X_train, X_test = data["X_train"], data["X_test"]
@@ -141,14 +144,22 @@ def train(model_type: str, data: dict):
         })
 
         joblib.dump(model, save_path)
+        if model_type == "xgboost":
+            mlflow.xgboost.log_model(model, name="model")
+        else:
+            mlflow.sklearn.log_model(
+                model,
+                name="model",
+                serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_PICKLE,
+            )
         log.info("[%s] Saved → %s", model_type, save_path)
 
 
 def main():
     parser = argparse.ArgumentParser(description="Train a single structural model.")
     parser.add_argument("--model", choices=["xgboost", "random_forest"], default="xgboost")
-    parser.add_argument("--retest-login",   type=Path, default=MLFLOW_DB.parent / "data/retest/proxy_data_login_form.csv")
-    parser.add_argument("--retest-no-form", type=Path, default=MLFLOW_DB.parent / "data/retest/proxy_data_no_form.csv")
+    parser.add_argument("--retest-login",   type=Path, default=RETEST_LOGIN_FORM)
+    parser.add_argument("--retest-no-form", type=Path, default=RETEST_NO_FORM)
     args = parser.parse_args()
     data = prepare_data(args.retest_login, args.retest_no_form)
     train(args.model, data)

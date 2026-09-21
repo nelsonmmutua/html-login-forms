@@ -6,7 +6,7 @@ from pathlib import Path
 
 import mlflow
 
-from htmlloginforms.config import MLFLOW_DB, MLFLOW_EXPERIMENT, RETEST_LOGIN_FORM, RETEST_NO_FORM
+from htmlloginforms.config import MLFLOW_EXPERIMENT, MLFLOW_TRACKING_URI, RETEST_LOGIN_FORM, RETEST_NO_FORM
 from htmlloginforms.train import prepare_data, train
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -23,7 +23,7 @@ def _worker(args: tuple) -> str:
 
 def train_all(retest_login: Path, retest_no_form: Path):
     # Initialise DB and experiment in the main process so workers don't race to create tables.
-    mlflow.set_tracking_uri(f"sqlite:///{MLFLOW_DB}")
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(MLFLOW_EXPERIMENT)
 
     log.info("Loading and featurising data once...")

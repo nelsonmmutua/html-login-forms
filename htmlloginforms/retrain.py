@@ -14,8 +14,8 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBClassifier
 
 from htmlloginforms.config import (
-    MLFLOW_DB,
     MLFLOW_EXPERIMENT,
+    MLFLOW_TRACKING_URI,
     MODELS_DIR,
     RANDOM_STATE,
     RF_PARAMS,
@@ -48,7 +48,7 @@ def load_and_merge(new_data_path: Path) -> pd.DataFrame:
 
 def retrain(model_type: str, new_data_path: Path, output_path: Path | None):
     MODELS_DIR.mkdir(exist_ok=True)
-    mlflow.set_tracking_uri(f"sqlite:///{MLFLOW_DB}")
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(MLFLOW_EXPERIMENT)
 
     df = load_and_merge(new_data_path)

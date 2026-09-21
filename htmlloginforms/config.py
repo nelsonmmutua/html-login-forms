@@ -9,6 +9,7 @@ TRAIN_DIR  = DATA_DIR / "train"
 RETEST_DIR = DATA_DIR / "retest"
 MODELS_DIR = ROOT / "models"
 MLFLOW_DB = ROOT / "mlflow.db"
+MLFLOW_TRACKING_URI = "https://mlflow.dev.jsc.jamflabs.io"
 
 TRAIN_LOGIN_FORM  = TRAIN_DIR  / "train_login_form-2026-08.csv"
 TRAIN_NO_FORM     = TRAIN_DIR  / "train_no_form-2026-08.csv"
